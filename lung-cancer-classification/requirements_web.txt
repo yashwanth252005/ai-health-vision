@@ -1,0 +1,19 @@
+# ========================================================================
+# WEB APP REQUIREMENTS
+# Install: pip install -r requirements_web.txt
+# ========================================================================
+
+# Core dependencies
+gradio>=4.0.0
+tensorflow>=2.18.0
+pillow>=10.0.0
+numpy>=1.24.0
+
+# Optional: Gemini AI for medical recommendations
+google-generativeai>=0.3.0
+
+# Already installed in your environment
+opencv-python>=4.8.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+scikit-learn>=1.3.0

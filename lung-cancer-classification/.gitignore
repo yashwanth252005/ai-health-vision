@@ -1,0 +1,178 @@
+# ========================================================================
+# Python
+# ========================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.manifest
+*.spec
+
+# ========================================================================
+# Virtual Environment (CRITICAL - Don't upload 500MB+ folder!)
+# ========================================================================
+lung_env/
+venv/
+env/
+ENV/
+.venv
+
+# ========================================================================
+# Model Files (CRITICAL - Too large for GitHub, >100MB limit)
+# ========================================================================
+*.h5
+*.hdf5
+*.keras
+*.pkl
+*.pickle
+*.pth
+*.pt
+*.ckpt
+*.pb
+training/lung_cancer_final.h5
+saved_models/
+models/saved_models/
+*.weights
+
+# ========================================================================
+# Dataset & Images (CRITICAL - Privacy & Size)
+# ========================================================================
+data/
+dataset/
+raw/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tif
+*.tiff
+*.dcm
+# But keep example images if you have them
+!docs/images/
+!screenshots/
+
+# ========================================================================
+# Results & Output Files (Can be regenerated)
+# ========================================================================
+results/
+outputs/
+logs/
+*.log
+*.csv
+*.json
+confusion_matrix.png
+training_history.png
+training_results.json
+
+# ========================================================================
+# Environment Variables & Secrets (CRITICAL - API Keys!)
+# ========================================================================
+.env
+.env.local
+.env.*.local
+*.env
+secrets.yaml
+api_keys.txt
+
+# ========================================================================
+# Jupyter Notebook
+# ========================================================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# ========================================================================
+# IDE & Editor Files
+# ========================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# ========================================================================
+# Testing & Temporary Files
+# ========================================================================
+test_gemini.py
+test_gemini_medical.py
+test_*.py
+temp/
+tmp/
+*.tmp
+*.bak
+*.cache
+
+# ========================================================================
+# System Files
+# ========================================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ========================================================================
+# Kaggle Files (Optional - if you download from Kaggle)
+# ========================================================================
+kaggle.json
+*.zip
+*.tar.gz
+*.rar
+
+# ========================================================================
+# Documentation Build Files
+# ========================================================================
+docs/_build/
+site/
+
+# ========================================================================
+# Coverage Reports
+# ========================================================================
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# ========================================================================
+# Pytest
+# ========================================================================
+.pytest_cache/
+pytestdebug.log
+
+# ========================================================================
+# MyPy
+# ========================================================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ========================================================================
+# Keep These Files (Exceptions)
+# ========================================================================
+!README.md
+!requirements.txt
+!requirements_web.txt
+!.gitignore
+!LICENSE
+!.env.example

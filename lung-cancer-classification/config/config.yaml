@@ -1,0 +1,251 @@
+# ============================================================================
+# LUNG CANCER CLASSIFICATION - CONFIGURATION FILE
+# Based on Scientific Reports Journal (DOI: 10.1038/s41598-025-93718-7)
+# ============================================================================
+
+# PROJECT SETTINGS
+project:
+  name: "Lung Cancer Classification"
+  version: "1.0.0"
+  description: "AI-based lung cancer classification using Inverted Residual and Self-Attention CNNs"
+
+# DATASET SETTINGS
+dataset:
+  name: "lung_cancer"
+  classes: 3  # Benign, Malignant, Normal (from confusion matrix in journal)
+  class_names: ["benign", "malignant", "normal"]
+  original_images: 197  # As mentioned in journal Table 1
+  target_augmented: 4000  # Journal mentions 4000 for lung cancer
+  
+  # Data Split (50%-50% as per journal)
+  train_split: 0.5
+  test_split: 0.5
+  
+  # Image Preprocessing
+  image_size: [224, 224]  # Input size for both CNNs
+  channels: 3  # RGB images
+  normalization: "standard"  # Normalize to [0, 1]
+
+# DATA AUGMENTATION (As per journal Figure 3)
+augmentation:
+  enabled: true
+  operations:
+    - "flip_left"     # Horizontal flip left
+    - "flip_right"    # Horizontal flip right
+    - "rotate_90"     # Rotate 90 degrees
+  # Each original image generates 3 augmented versions + original = 4 total
+
+# TRAINING HYPERPARAMETERS (Exact values from journal)
+training:
+  # Optimizer settings (from journal page 7)
+  optimizer: "adam"  # ADAM optimizer
+  learning_rate: 0.00021  # Initial learning rate from journal
+  momentum: 0.701  # Momentum value from journal
+  
+  # Batch size (adjusted for 4GB VRAM - journal used 64)
+  batch_size_local: 16  # For local training (RTX 2050 4GB)
+  batch_size_kaggle: 64  # For Kaggle training (as per journal)
+  
+  # Training configuration
+  epochs: 100  # Maximum epochs
+  early_stopping_patience: 15  # Stop if no improvement
+  
+  # Mixed precision (for 4GB GPU efficiency)
+  mixed_precision: true
+  
+  # Checkpointing
+  save_best_only: true
+  save_frequency: 5  # Save every 5 epochs
+
+# MODEL ARCHITECTURES
+
+# 94-Layered Inverted Residual CNN (IRCNN)
+inverted_residual:
+  name: "94-Layered Deep Inverted Residual CNN"
+  total_layers: 94
+  total_parameters: 5.3e6  # 5.3 million parameters
+  
+  # Architecture details (from journal page 6, Figure 4)
+  input_shape: [224, 224, 3]
+  
+  # Parallel and serial blocks configuration
+  num_parallel_blocks: 5
+  num_serial_blocks: 2
+  
+  # Convolutional parameters
+  kernel_size: [3, 3]
+  stride: 1
+  activation: "relu"
+  
+  # Regularization
+  batch_normalization: true
+  dropout_rate: 0.3
+  
+  # Output
+  pooling: "global_average"  # GAP layer for feature extraction
+  feature_dim: 1282  # Feature dimension from GAP (from journal)
+
+# 84-Layered Self-Attention CNN (SACNN)
+self_attention:
+  name: "84-Layered Self-Attention CNN"
+  total_layers: 84
+  total_parameters: 7.5e6  # 7.5 million parameters
+  convolutional_layers: 17
+  
+  # Architecture details (from journal page 6-7, Figure 5)
+  input_shape: [224, 224, 3]
+  
+  # Self-attention blocks
+  num_attention_blocks: 7
+  num_parallel_per_block: 4
+  
+  # Convolutional parameters
+  kernel_size: [3, 3]
+  stride: 1
+  activation: "relu"
+  
+  # Regularization
+  batch_normalization: true
+  dropout_rate: 0.3
+  
+  # Output
+  pooling: "global_average"
+  feature_dim: 1406  # Feature dimension from self-attention layer (from journal)
+
+# FEATURE FUSION (Serial-based Strong Correlation - from journal page 8)
+feature_fusion:
+  method: "serial_correlation"  # Serial-based strong correlation approach
+  
+  # Pearson Correlation Coefficient (Equation 4 in journal)
+  correlation_method: "pearson"
+  threshold: 0.5  # Correlation threshold for feature selection
+  
+  # Fused feature dimensions
+  ircnn_features: 1282  # From IRCNN GAP layer (N × 1282)
+  sacnn_features: 1406  # From SACNN attention layer (N × 1406)
+  fused_dimension: 2688  # Combined: 1282 + 1406
+
+# FEATURE OPTIMIZATION (Salp Swarm Algorithm - SSA)
+ssa_optimization:
+  name: "Salp Swarm Controlled Standard Error Mean (SScSEM)"
+  
+  # SSA Parameters (from journal page 8-9)
+  max_iterations: 200  # As mentioned in journal
+  population_size: 30  # Number of salps in chain
+  
+  # Search space
+  lower_bound: 0.1
+  upper_bound: 1.0
+  
+  # Fitness function
+  fitness_function: "standard_error_mean"  # SEM from journal
+  
+  # Optimization goal
+  optimize_for: "accuracy"  # Maximize classification accuracy
+  
+  # Selected features output
+  output_dimension_range: [1202, 1510]  # N × K where K varies per dataset
+
+# SHALLOW WIDE NEURAL NETWORK (SWNN) - Final Classifier
+swnn_classifier:
+  name: "Shallow Wide Neural Network"
+  architecture: "single_hidden_layer"
+  
+  # Network structure
+  input_size: "variable"  # Depends on SSA optimization output
+  hidden_layer_size: 512  # Wide hidden layer
+  output_size: 3  # 3 classes (benign, malignant, normal)
+  
+  # Activation functions
+  hidden_activation: "relu"
+  output_activation: "softmax"
+  
+  # Training
+  loss_function: "categorical_crossentropy"
+  metrics: ["accuracy", "precision", "recall", "f1_score"]
+  
+  # Regularization
+  dropout: 0.5
+
+# EXPECTED RESULTS (From journal Table 5 - Lung Cancer)
+expected_results:
+  precision: 95.0  # Target precision (%)
+  sensitivity: 95.0  # Target sensitivity/recall (%)
+  f1_score: 95.0  # Target F1-score (%)
+  accuracy: 95.0  # Target accuracy (%)
+  training_time_journal: 488  # seconds (on RTX 3060 12GB)
+  training_time_local_estimate: 900  # seconds (on RTX 2050 4GB)
+
+# EVALUATION METRICS
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "confusion_matrix"
+    - "classification_report"
+  
+  # Confusion matrix classes
+  confusion_matrix_labels: ["Benign", "Malignant", "Normal"]
+  
+  # Cross-validation
+  cv_folds: 5
+
+# GRADCAM VISUALIZATION (Model Interpretability)
+gradcam:
+  enabled: true
+  target_layers:
+    - "last_conv_layer"  # Target last convolutional layer
+  colormap: "jet"  # Heatmap color scheme
+  alpha: 0.4  # Overlay transparency
+
+# GPU CONFIGURATION (Optimized for RTX 2050 4GB)
+gpu:
+  # Memory management (CRITICAL for 4GB VRAM)
+  memory_growth: true  # Prevent TensorFlow from allocating all memory
+  per_process_gpu_memory_fraction: 0.9  # Use 90% of available GPU memory
+  
+  # Mixed precision training (save memory)
+  mixed_precision_enabled: true
+  
+  # Device configuration
+  visible_devices: "0"  # Use GPU 0
+  allow_soft_placement: true
+
+# PATHS
+paths:
+  # Data directories
+  raw_data: "data/raw"
+  augmented_data: "data/augmented"
+  processed_data: "data/processed"
+  
+  # Model directories
+  saved_models: "saved_models"
+  checkpoints: "saved_models/checkpoints"
+  
+  # Results
+  results: "results"
+  logs: "results/logs"
+  plots: "results/plots"
+  confusion_matrices: "results/confusion_matrices"
+  gradcam_outputs: "results/gradcam"
+
+# LOGGING
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "results/logs/training.log"
+  console: true
+
+# KAGGLE NOTEBOOK SETTINGS
+kaggle:
+  kernel_type: "notebook"
+  gpu: "P100"  # Tesla P100 (16GB VRAM)
+  internet: true  # Enable internet for dataset download
+  enable_gpu: true
+  batch_size: 64  # Use journal's batch size on Kaggle
+
+# REPRODUCIBILITY
+reproducibility:
+  random_seed: 42
+  deterministic: true
