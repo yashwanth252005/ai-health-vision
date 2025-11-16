@@ -192,7 +192,7 @@ Result: 91.82% accuracy, all classes detected!
 - Generates confusion matrix
 - Calculates precision, recall, F1-score
 - Per-class performance analysis
-- Compares with journal benchmark (95%)
+- Compares with journal benchmark (85%)
 
 ---
 
