@@ -425,7 +425,7 @@ The training took about 2 hours on Kaggle's P100 GPU."
 "Now, the most important part: the results!
 
 **Overall Accuracy: 91.82%**
-This is just 3.18% below the journal's target of 95%, which is excellent given the dataset challenges.
+This is just 3.18% below the journal's target of 85%, which is excellent given the dataset challenges.
 
 **Per-Class Performance:**
 
@@ -663,7 +663,7 @@ This is an AI assistant, not a replacement for doctors. Final diagnosis must alw
 **Script:**
 "Let me compare my results with the reference journal paper:
 
-**Journal Target: 95% accuracy**
+**Journal Target: 85% accuracy**
 **My Achievement: 91.82% accuracy**
 
 **Difference: -3.18%**
@@ -941,7 +941,7 @@ Finally, Attempt 7 with perfect 300:300:300 balance worked. The persistence and 
 - Malignant detection: 98.2%
 - Normal detection: 94.0%
 - Benign detection: 54.2%
-- Journal target: 95%
+- Journal target: 85%
 - Training time: ~2 hours
 - Epochs: 50
 - Batch size: 64 (Kaggle)
