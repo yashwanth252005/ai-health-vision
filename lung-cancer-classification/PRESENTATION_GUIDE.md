@@ -58,7 +58,7 @@ class SACNN:
 
 #### 3. `models/swnn_classifier.py`
 **What it does:**
-- Final classifier using Shuffled Wavelet Neural Network
+- Final classifier using Shallow Wide Neural Network
 - Combines features from IRCNN and SACNN
 - Makes the final prediction (Benign/Malignant/Normal)
 
