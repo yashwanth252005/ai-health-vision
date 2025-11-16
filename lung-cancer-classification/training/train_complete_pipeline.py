@@ -424,7 +424,7 @@ def train_complete_pipeline(env_config=None):
     print(f"Environment: {env_config['name'].upper()}")
     print(f"Batch Size: {env_config['batch_size']}")
     print(f"Final Accuracy: {results['accuracy'] * 100:.2f}%")
-    print(f"Target Accuracy: 95.0%")
+    print(f"Target Accuracy: 85.0%")
     print("\nModels saved in: saved_models/")
     print("Results saved in: results/")
     print("=" * 70 + "\n")

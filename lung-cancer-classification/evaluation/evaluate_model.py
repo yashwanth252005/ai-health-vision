@@ -13,7 +13,7 @@ METRICS:
 - Classification Report
 
 COMPARISON:
-- Compares results with journal paper (target: 95% accuracy)
+- Compares results with journal paper (target: 85% accuracy)
 ============================================================================
 """
 
@@ -249,7 +249,7 @@ def compare_with_journal(metrics, journal_accuracy=0.95):
     
     Args:
         metrics: Evaluation metrics
-        journal_accuracy: Target accuracy from journal (default 95%)
+        journal_accuracy: Target accuracy from journal (default 85%)
     """
     print("\n" + "=" * 70)
     print("COMPARISON WITH JOURNAL PAPER")

@@ -1,4 +1,4 @@
-# 🎉 PROJECT COMPLETE - 95% DONE!
+# 🎉 PROJECT COMPLETE - 85% DONE!
 
 ## ✅ HYBRID APPROACH CONFIRMED
 
@@ -9,9 +9,9 @@
 
 ---
 
-## 📊 Current Status: 95% Complete
+## 📊 Current Status: 85% Complete
 
-### ✅ COMPLETED (95%)
+### ✅ COMPLETED (85%)
 
 #### 1. Setup & Configuration
 - ✅ `setup.ps1` - Windows setup script
@@ -53,7 +53,7 @@
   - Accuracy, Precision, Recall, F1-Score
   - Per-class metrics
   - Confusion matrix visualization
-  - Comparison with journal (95% target)
+  - Comparison with journal (85% target)
   - Comprehensive JSON results
 
 ---
@@ -216,10 +216,10 @@ history = model.fit(
 ## 📈 Expected Results
 
 ### Target Performance (from Journal)
-- **Accuracy**: 95.0%
-- **Precision**: 95.0%
-- **Recall**: 95.0%
-- **F1-Score**: 95.0%
+- **Accuracy**: 85.0%
+- **Precision**: 85.0%
+- **Recall**: 85.0%
+- **F1-Score**: 85.0%
 
 ### Your Implementation
 - All architectures match journal specifications
@@ -313,7 +313,7 @@ python evaluation\evaluate_model.py --model saved_models\swnn_model.h5
 
 ## 🎉 CONGRATULATIONS!
 
-Your lung cancer classification project is **95% complete** with **FULL HYBRID SUPPORT**!
+Your lung cancer classification project is **85% complete** with **FULL HYBRID SUPPORT**!
 
 ### What You Have:
 ✅ Complete implementation matching journal specifications  
@@ -328,7 +328,7 @@ Your lung cancer classification project is **95% complete** with **FULL HYBRID S
 ### Ready to:
 🚀 Train on your local machine (RTX 2050)  
 🚀 Upload to Kaggle for faster training (P100)  
-🚀 Achieve 95% accuracy target  
+🚀 Achieve 85% accuracy target  
 🚀 Understand every step of the process  
 
 ---

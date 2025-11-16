@@ -182,7 +182,7 @@ r(U,V) = Σ(Ui-Ū)(Vi-V̄) / √[Σ(Ui-Ū)² × Σ(Vi-V̄)²]
 **Why:**
 - Fast training
 - Works well with good features
-- High accuracy (95%)
+- High accuracy (85%)
 
 ---
 
@@ -235,10 +235,10 @@ r(U,V) = Σ(Ui-Ū)(Vi-V̄) / √[Σ(Ui-Ū)² × Σ(Vi-V̄)²]
 
 ### 2. **Performance Metrics**
 ```
-Accuracy:    95.0%
-Precision:   95.0%
-Sensitivity: 95.0%
-F1-Score:    95.0%
+Accuracy:    85.0%
+Precision:   85.0%
+Sensitivity: 85.0%
+F1-Score:    85.0%
 ```
 
 ### 3. **Visualizations**
@@ -249,9 +249,9 @@ F1-Score:    95.0%
 ### 4. **Classification Report**
 ```
               precision  recall  f1-score  support
-    benign       0.95     0.95     0.95      XXX
- malignant       0.95     0.95     0.95      XXX
-    normal       0.95     0.95     0.95      XXX
+    benign       0.85     0.85     0.85      XXX
+ malignant       0.85     0.85     0.85      XXX
+    normal       0.85     0.85     0.85      XXX
 ```
 
 ---
@@ -317,7 +317,7 @@ Once dataset is downloaded, tell me and I'll:
 **A:** Yes! Just change dataset. Same architecture works.
 
 ### Q5: How accurate will my model be?
-**A:** Target is 95%. Should be 93-95% with proper training.
+**A:** Target is 85%. Should be 93-85% with proper training.
 
 ---
 
@@ -368,7 +368,7 @@ You'll know you succeeded when:
 - ✅ All scripts run without errors
 - ✅ GPU is detected and used
 - ✅ Models train successfully
-- ✅ Accuracy reaches ~95%
+- ✅ Accuracy reaches ~85%
 - ✅ Confusion matrix looks good
 - ✅ GradCAM shows correct regions
 

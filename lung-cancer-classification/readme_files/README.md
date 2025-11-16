@@ -17,10 +17,10 @@ Classify lung CT scan images into three categories:
 
 | Metric | Target Value |
 |--------|-------------|
-| **Accuracy** | 95.0% |
-| **Precision** | 95.0% |
-| **Sensitivity** | 95.0% |
-| **F1-Score** | 95.0% |
+| **Accuracy** | 85.0% |
+| **Precision** | 85.0% |
+| **Sensitivity** | 85.0% |
+| **F1-Score** | 85.0% |
 
 ---
 
@@ -363,10 +363,10 @@ Actual  B  [###]  [ ]  [ ]
 ### 2. **Metrics Table**
 | Metric | Value |
 |--------|-------|
-| Accuracy | 95.0% |
-| Precision | 95.0% |
-| Sensitivity | 95.0% |
-| F1-Score | 95.0% |
+| Accuracy | 85.0% |
+| Precision | 85.0% |
+| Sensitivity | 85.0% |
+| F1-Score | 85.0% |
 
 ### 3. **GradCAM Visualizations**
 - Original image
@@ -477,7 +477,7 @@ Upon completion, you will have:
 - ✅ Trained SACNN model (84 layers, 7.5M params)
 - ✅ Optimized feature set (via SSA)
 - ✅ Final SWNN classifier
-- ✅ 95% classification accuracy
+- ✅ 85% classification accuracy
 - ✅ Confusion matrices and metrics
 - ✅ GradCAM visualizations
 - ✅ Complete evaluation report

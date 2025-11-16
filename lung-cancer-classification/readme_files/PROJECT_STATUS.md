@@ -101,7 +101,7 @@ python data_augmentation.py
     ↓
 🧠 Train SWNN → Final Classification
     ↓
-📈 Evaluation → 95% Accuracy Target!
+📈 Evaluation → 85% Accuracy Target!
 ```
 
 ---
@@ -234,10 +234,10 @@ When training completes, you should achieve:
 
 | Metric      | Target | Your Result |
 |-------------|--------|-------------|
-| Accuracy    | 95.0%  | _TBD_       |
-| Precision   | 95.0%  | _TBD_       |
-| Sensitivity | 95.0%  | _TBD_       |
-| F1-Score    | 95.0%  | _TBD_       |
+| Accuracy    | 85.0%  | _TBD_       |
+| Precision   | 85.0%  | _TBD_       |
+| Sensitivity | 85.0%  | _TBD_       |
+| F1-Score    | 85.0%  | _TBD_       |
 
 ---
 

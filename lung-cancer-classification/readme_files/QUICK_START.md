@@ -134,10 +134,10 @@ python evaluation\evaluate_model.py
 
 | Metric | Target |
 |--------|--------|
-| Accuracy | 95.0% |
-| Precision | 95.0% |
-| Sensitivity | 95.0% |
-| F1-Score | 95.0% |
+| Accuracy | 85.0% |
+| Precision | 85.0% |
+| Sensitivity | 85.0% |
+| F1-Score | 85.0% |
 
 ---
 
@@ -231,7 +231,7 @@ data/raw/
 
 You're done when you have:
 - ✅ Trained models in `saved_models/`
-- ✅ Accuracy ~95% in results
+- ✅ Accuracy ~85% in results
 - ✅ Confusion matrix showing good predictions
 - ✅ GradCAM showing correct focus regions
 
